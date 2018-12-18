@@ -1,0 +1,5 @@
+Exercise 1/: Write a program to solve the quadratic equation which support both Vietnamese and English language by utilizing the feature of GCC compiler.
+
+Exercise 2/: Write a program that have in put is a the triangle, the triangle is defined by 3 points in Cartersian geometry. The program shall calculate the area of the triangle. Try to utilize the struct data type
+
+Exercise 3/: write a function whose input is array of integer, the function shall sort it in the ascending order

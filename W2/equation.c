@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 
-#define ENGLISH OFF
-#define VIETNAMESE ON
+#define ON 1
+#define OFF 0
+
+#define ENGLISH ON
+#define VIETNAMESE OFF
 
 void main(void)
 {

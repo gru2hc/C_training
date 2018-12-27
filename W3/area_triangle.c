@@ -29,7 +29,7 @@ void main(void)
 float calculate_area(triangle_t *p_ABC)
 {
     float area;
-    area = fabs(((*p_ABC).A.x*((*p_ABC).B.y-(*p_ABC).C.y)+(*p_ABC).B.x*((*p_ABC).C.y-(*p_ABC).A.y)+(*p_ABC).C.x*((*p_ABC).A.y-(*p_ABC).B.y))/2.0);
+    area = fabs((p_ABC->A.x*(p_ABC->B.y-p_ABC->C.y)+p_ABC->B.x*(p_ABC->C.y-p_ABC->A.y)+p_ABC->C.x*(p_ABC->A.y-p_ABC->B.y))/2.0);
     // area = ABC.A.x*(ABC.B.y-ABC.C.y)+ABC.B.x*(ABC.C.y-ABC.A.y)+ABC.C.x*(ABC.A.y-ABC.B.y);
     // area = fabs(area/2);
     return area;

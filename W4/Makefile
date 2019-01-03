@@ -6,7 +6,7 @@ dob.o: dob.c
 dob:dob.o
 	$(CC) dob.o -o dob
 	
-build: dob
+all: dob
 
 exec:
 	dob

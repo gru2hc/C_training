@@ -1,15 +1,15 @@
 CC=gcc
 
-dob.o: dob.c
-	$(CC) -c dob.c -o dob.o
+msnv.o: msnv.c
+	$(CC) -c msnv.c -o msnv.o
 
-dob:dob.o
-	$(CC) dob.o -o dob
+msnv:msnv.o
+	$(CC) msnv.o -o msnv
 	
-all: dob
+all: msnv
 
 exec:
-	dob
+	msnv
 
 clean:
 	rm -rf *.exe *.o

@@ -1,15 +1,15 @@
 CC=gcc
 
-msnv.o: msnv.c
-	$(CC) -c msnv.c -o msnv.o
+qsort.o: qsort.c
+	$(CC) -c qsort.c -o qsort.o
 
-msnv:msnv.o
-	$(CC) msnv.o -o msnv
+qsort:qsort.o
+	$(CC) qsort.o -o qsort
 	
-all: msnv
+all: qsort
 
 exec:
-	msnv
+	qsort
 
 clean:
 	rm -rf *.exe *.o

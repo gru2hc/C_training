@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct node
 {
@@ -13,31 +14,37 @@ int delete_node(head_t *head);
 void display(head_t head);
 void add_node_head(head_t *head, node_t* new_node);
 int delete_node_tail(head_t *head);
+int free_node(head_t *head);
 
 head_t g_head = NULL;
 node_t* con_node;
 
 void main(void)
 {
+    int i,n;
     int temp;
-    node_t nodeA = {4,NULL};
-    node_t nodeB = {5,NULL};
-    node_t nodeC = {6,NULL};
-    node_t nodeD = {7,NULL};
-    node_t nodeNew = {90,NULL};
-
-    add_node(&g_head, &nodeA);
-    add_node(&g_head, &nodeB);
-    add_node(&g_head, &nodeC);
-    add_node(&g_head, &nodeD);
-    add_node_head(&g_head, &nodeNew);
+    printf("Please input the amount of number: \n");
+    scanf("%d", &n);
+    for (i=0;i<n;i++)
+    {
+        node_t* node = (node_t*)malloc(sizeof(node_t));
+        scanf("%d", &(node->data));
+        node->next=NULL;
+        add_node(&g_head,node);
+    }
 
     display(g_head);
+    free_node(&g_head);
+    // for (i=0;i<n;i++)
+    // {
+        // // temp = delete_node_tail(&g_head);
+        // temp = delete_node(&g_head);
+    // }
 
-    temp = delete_node(&g_head);
-    display(g_head);
-    temp = delete_node_tail(&g_head);
-    display(g_head);
+    // temp = delete_node(&g_head);
+    // display(g_head);
+    // temp = delete_node_tail(&g_head);
+    // display(g_head);
     return;
 }
 
@@ -72,11 +79,26 @@ void add_node_head(head_t *head, node_t* new_node)
     *head = new_node;
 }
 
+int free_node(head_t *head)
+{
+    node_t* temp;
+    while((*head) != NULL)
+    {
+        temp = (*head);
+        (*head) = (*head)->next;
+        free(temp);
+    }
+    return 0;
+}
+
 int delete_node(head_t *head)
 {
+    node_t* temp;
     if((*head) != NULL)
     {
+        temp = (*head);
         (*head) = (*head)->next;
+        free(temp);
         return 0;
     }
     else
@@ -111,6 +133,7 @@ int delete_node_tail(head_t *head)
             break;
         }
     }
+    free((t_pre_last_node)->next);
     (t_pre_last_node)->next=NULL;
     return 0;
 }

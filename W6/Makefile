@@ -12,8 +12,8 @@ main:main.o handle_node.o display.o
 	
 all: main
 
-exec:
-	main.exe
+exec: all
+	./main.exe
 
 clean:
 	rm -rf *.exe *.o

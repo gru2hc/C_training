@@ -13,7 +13,6 @@ head_t g_head = NULL;
 
 void add_node(head_t *head, node_t* new_node)
 {
-    // static int test;
     node_t* temp;
     if (NULL == *head)
     {

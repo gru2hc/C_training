@@ -9,7 +9,8 @@ typedef struct stack_st
     int top;
 } stack_t;
 
-void init_stack(stack_t* stack_var, int* arr, int max_size);
+void init_stack(stack_t* stack_var, int max_size);
+void deinit_stack(stack_t* stack_var);
 void display_stack(stack_t* stack_var);
 int push(stack_t* stack_var, int num);
 int pop(stack_t* stack_var, int* value_pop);
@@ -18,13 +19,11 @@ int main(void)
 {
     stack_t stack_1;
     stack_t stack_2;
-    int arr_1[5]={0};
-    int arr_2[10]={0};
     int value_pop;
     int check_push=1;
     srand(time(0));
-    init_stack(&stack_1, &arr_1[0], sizeof(arr_1)/sizeof(int));
-    init_stack(&stack_2, &arr_2[0], sizeof(arr_2)/sizeof(int));
+    init_stack(&stack_1, 5);
+    init_stack(&stack_2, 10);
     display_stack(&stack_1);
     while(1==check_push)
     {
@@ -41,13 +40,27 @@ int main(void)
     }
     printf("\nStack 2 is:");
     display_stack(&stack_2);
+    deinit_stack(&stack_1);
+    deinit_stack(&stack_2);
+    /*Program hangs*/
+    pop(&stack_1, &value_pop);
+    printf("\nStack 1 is:");
+    display_stack(&stack_1);
 }
 
-void init_stack(stack_t* stack_var, int* arr, int max_size)
+void init_stack(stack_t* stack_var, int max_size)
 {
-    stack_var->arr = arr;
+    int* p = NULL;
+    p = malloc(max_size*sizeof(int));
+    stack_var->arr = p;
     stack_var->max_size = max_size;
     stack_var->top = 0;
+}
+
+void deinit_stack(stack_t* stack_var)
+{
+    free(stack_var->arr);
+    stack_var->arr = NULL;
 }
 
 int push(stack_t* stack_var, int num)
